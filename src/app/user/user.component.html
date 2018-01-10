@@ -1,0 +1,61 @@
+
+<form [formGroup]="rForm">
+  <section class="form-block">
+    <label>Add User Information</label>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <label for="firstName"
+             aria-haspopup="true"
+             role="tooltip"
+             class="tooltip tooltip-validation tooltip-md"
+             [class.invalid]="rForm.get('firstName').invalid
+                    && (rForm.get('firstName').dirty || rForm.get('firstName').touched)">
+        <input id="firstName" type="text"
+               formControlName="firstName">
+        <span class="tooltip-content">
+                    You must specify a first name that's between 6 and 20 characters..
+                </span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <label for="lastName"
+             aria-haspopup="true"
+             role="tooltip"
+             class="tooltip tooltip-validation tooltip-md "
+             [class.invalid]="rForm.get('lastName').invalid
+                    && (rForm.get('lastName').dirty || rForm.get('lastName').touched)">
+        <input id="lastName" type="text"
+               formControlName="lastName">
+        <span class="tooltip-content">
+                   You must specify a last name that's between 6 and 20 characters.
+                </span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="birthDate">Date Of Birth</label>
+      <label for="birthDate"
+             aria-haspopup="true"
+             role="tooltip"
+             class="tooltip tooltip-validation tooltip-md"
+             [class.invalid]="rForm.get('birthDate').invalid
+                    && (rForm.get('birthDate').dirty || rForm.get('birthDate').touched)">
+        <input type="date" id="birthDate"  formControlName="birthDate" size="35"
+
+        >
+        <span class="tooltip-content">
+                   Date of Birth is required.
+                </span>
+      </label>
+    </div>
+
+  </section>
+  <div class="btn-group btn-primary">
+    <button class="btn btn-success" class="btn btn-primary"
+            type="submit"
+            [disabled]="rForm.invalid" [routerLink]="['/', 'users']" [clrLoading]="submitLoading" (click)="SaveUser()">Save</button>
+    <button class="btn btn-danger" (click)="cancel()">Delete</button>
+  </div>
+</form>
